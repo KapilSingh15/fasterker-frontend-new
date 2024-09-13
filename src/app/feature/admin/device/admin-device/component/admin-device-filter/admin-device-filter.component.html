@@ -1,0 +1,22 @@
+<div class="row mb-3">
+    <div class="col-md-2">
+        <div >
+            <ngx-select-dropdown [config]="config" [options]="options" (change)="onSearchBY($event)"></ngx-select-dropdown>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <search-component [placeholder]="'Search Value'"  [isGlobalSearchEnabled]="false"
+        ></search-component>
+    </div>
+    <div class="col-md-2">
+        <ngx-select-dropdown [config]="config1" [options]="selectsearch"  ></ngx-select-dropdown>
+
+    </div>
+
+    <div class="col-md-2">
+        <button class="btn btn-light"><i class="fa fa-filter" aria-hidden="true"></i> Export</button>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-primary" (click)="onAddDevice()"><i class="fa fa-plus" aria-hidden="true"></i> Create</button>
+    </div>
+</div>

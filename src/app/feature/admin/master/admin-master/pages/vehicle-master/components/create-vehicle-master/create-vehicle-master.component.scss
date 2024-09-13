@@ -1,0 +1,19 @@
+.custom-dropdown-height {
+    height: 200px; /* Set the height you need */
+    overflow-y: auto; /* Add scroll if the content overflows */
+}
+
+
+::ng-deep {
+    ngx-select-dropdown {
+      .ngx-dropdown-list-container {
+        height: auto !important;
+      }
+  
+      &.active {
+        .ngx-dropdown-list-container {
+          height: calc(100vh - 490px) !important;
+        }
+      }
+    }
+}

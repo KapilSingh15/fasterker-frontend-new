@@ -1,0 +1,123 @@
+.card-data {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.card .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3em;
+    height: 100%;
+    transition: transform 0.4s ease;
+}
+
+.card .card-top,
+.card .card-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .card-top p,
+.card .card-top .card-title,
+.card .card-bottom p,
+.card .card-bottom .card-title {
+    margin: 0;
+}
+
+.card .card-title {
+    font-weight: 500;
+}
+
+.card .card-top p,
+.card .card-bottom p {
+    font-size: 15px !important;
+    font-weight: 500;
+}
+
+.card .card-bottom {
+    align-items: flex-end;
+}
+
+.card .card-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+}
+
+.card .card-image img {
+    max-width: 35%;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(0.97);
+}
+
+.card:hover .card-content {
+    transform: scale(0.96);
+}
+
+.card:hover .card-image svg {
+    transform: scale(1.05);
+}
+
+.card:active {
+    transform: scale(0.9);
+}
+
+.status {
+    padding: 1em;
+
+    span {
+        font-size: 15px !important;
+    }
+}
+
+.card.status.online {
+    img {
+        filter: brightness(0) saturate(100%) invert(60%) sepia(80%) saturate(600%) hue-rotate(90deg) brightness(95%) contrast(90%);
+    }
+    span,p {
+        color: #0dd760;
+    }
+  
+}
+
+.card.status.stopped {
+    img {
+        filter: brightness(0) saturate(100%) invert(40%) sepia(100%) saturate(3000%) hue-rotate(200deg) brightness(95%) contrast(95%);
+    }
+     span,p {
+        color: #1d79ed;
+    }
+}
+
+.card.status.idle {
+    img {
+        filter: brightness(0) saturate(100%) invert(65%) sepia(72%) saturate(558%) hue-rotate(356deg) brightness(96%) contrast(105%);
+    }
+     span,p {
+        color: #fbae05;
+    }
+}
+
+.card.status.offline {
+    img {
+        filter: brightness(0) saturate(100%) invert(75%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(50%) contrast(100%);
+    }
+     span,p {
+        color: #606060;
+    }
+}
+
+
+  
+

@@ -1,0 +1,80 @@
+<div class="modal-header text-center">
+    <h5>Role Create</h5>
+    <div class="close-modal">
+        <i class="fa fa-close" style="cursor: pointer;" (click)="cancel()"></i>
+    </div>
+</div>
+<div class="modal-body">
+    <form [formGroup]="createRoleForm">
+        <div class="_card white-bg">
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Company</label>
+                    <ngx-select-dropdown [config]="config"  [options]="companyDropdown" formControlName="companyName">
+                    </ngx-select-dropdown>
+                  
+                    @if (createRoleForm.get('companyName')?.invalid &&
+                    (createRoleForm.get('companyName')?.dirty || createRoleForm.get('companyName')?.touched))
+                    {
+                    <span class="text-danger">Company Name is Required</span>
+                    }
+                
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Role Name</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Role Name" formControlName="roleName"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (createRoleForm.get('roleName')?.invalid &&
+                    (createRoleForm.get('roleName')?.dirty || createRoleForm.get('roleName')?.touched))
+                    {
+                    <span class="text-danger">Role Name is Required</span>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Status</label>
+                    <ngx-select-dropdown [config]="config" formControlName="status" [options]="StatusDropdown">
+                    </ngx-select-dropdown>
+                    @if (createRoleForm.get('status')?.invalid &&
+                    (createRoleForm.get('status')?.dirty || createRoleForm.get('status')?.touched))
+                    {
+                    <span class="text-danger">Status is Required</span>
+                    }
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Description</label>
+                    <div class="input-group mb-2">
+                        <!-- <textarea type="text" class="form-control" placeholder="Enter Description"
+                             aria-describedby="button-addon2" ></textarea> -->
+                        <textarea class="form-control" placeholder="Enter Description"
+                            formControlName="description"></textarea>
+                       
+                    </div>
+                    @if (createRoleForm.get('description')?.invalid &&
+                    (createRoleForm.get('description')?.dirty || createRoleForm.get('description')?.touched))
+                    {
+                    <span class="text-danger">Description is Required</span>
+                    }
+                </div>
+            </div>
+
+        </div>
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-success" type="submit" [disabled]="!createRoleForm.valid" (click)="submit(createRoleForm.value)">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-danger" (click)="cancel()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,134 @@
+<div class="modal-header text-center">
+    <h5>Resource Group Create</h5>
+    <div class="close-modal">
+        <i class="fa fa-close" style="cursor: pointer;" (click)="cancel()"></i>
+    </div>
+</div>
+<div class="modal-body">
+    <form [formGroup]="resourceGroupForm">
+        <div class="_card white-bg">
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Resource Group Name*</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Resource Name" formControlName="resourceGroupName"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (resourceGroupForm.get('resourceGroupName')?.invalid &&
+                    (resourceGroupForm.get('resourceGroupName')?.dirty || resourceGroupForm.get('resourceGroupName')?.touched))
+                    {
+                    <span class="text-danger">Resource Group Name is Required</span>
+                    }
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Order Number</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Order Number" formControlName="orderNumber"
+                            aria-describedby="button-addon2" />
+                    </div>
+                   
+                    @if(resourceGroupForm.get('orderNumber')?.invalid && 
+                        (resourceGroupForm.get('orderNumber')?.dirty || resourceGroupForm.get('orderNumber')?.touched)) {
+                            @if(resourceGroupForm.get('orderNumber')?.errors?.['required']) {
+                                <span  class="text-danger">
+                                    Order Number is required
+                                </span>
+                            } @else if (resourceGroupForm.get('orderNumber')?.errors?.['pattern']) {
+                                <span class="text-danger">
+                                    Order Number must be a numeric value
+                                </span>
+                            }
+                        }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">URL*</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter URL" formControlName="url"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (resourceGroupForm.get('url')?.invalid &&
+                    (resourceGroupForm.get('url')?.dirty || resourceGroupForm.get('url')?.touched))
+                    {
+                    <span class="text-danger">URL is Required</span>
+                    }
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Icon Class</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Icon Class" formControlName="iconClass"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (resourceGroupForm.get('iconClass')?.invalid &&
+                    (resourceGroupForm.get('iconClass')?.dirty || resourceGroupForm.get('iconClass')?.touched))
+                    {
+                    <span class="text-danger">Icon Class is Required</span>
+                    }
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Status</label>
+                    <ngx-select-dropdown [config]="config" formControlName="status" [options]="StatusDropdown">
+                    </ngx-select-dropdown>
+                    @if (resourceGroupForm.get('status')?.invalid &&
+                    (resourceGroupForm.get('status')?.dirty || resourceGroupForm.get('status')?.touched))
+                    {
+                    <span class="text-danger">Status is Required</span>
+                    }
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">View On Mobile</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="flexCheckDefault" [checked]="resourceGroupForm.get('viewOnMobile')?.value === '1'"
+                        (change)="onCheckboxChange('1')">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Yes
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="flexCheckChecked"  [checked]="resourceGroupForm.get('viewOnMobile')?.value === '0'"
+                        (change)="onCheckboxChange('0')">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          No
+                        </label>
+                      </div>
+
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">Description</label>
+                    <div class="input-group mb-2">
+                        <textarea class="form-control" placeholder="Enter Description" formControlName="description"></textarea>
+                    </div>
+                    @if (resourceGroupForm.get('description')?.invalid &&
+                    (resourceGroupForm.get('description')?.dirty || resourceGroupForm.get('description')?.touched))
+                    {
+                    <span class="text-danger">Description is Required</span>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-success" type="submit" [disabled]="!resourceGroupForm.valid" (click)="submit(resourceGroupForm.value)">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-danger" (click)="cancel()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

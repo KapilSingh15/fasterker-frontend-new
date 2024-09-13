@@ -1,0 +1,73 @@
+@import "../../../../../styles//colors";
+
+.mx-search-box {
+  display: flex;
+  position: relative;
+  max-width: 350px;
+  width: 100%;
+
+  .form-control {
+    border-radius: 5px;
+
+    &:focus {
+      & + .mx-search-btn {
+        border: solid 1px $color-blue;
+      }
+    }
+
+    &:disabled {
+      & + .mx-search-btn {
+        img {
+          filter: grayscale(1);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  .mx-search-btn {
+    width: 30px;
+    height: 31px;
+    background: transparent;
+    border: 1px solid $color-gray;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -1px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+
+
+  .mx-clear-input-brn {
+    position: absolute;
+    left: 67px;
+    background: transparent;
+    border: none;
+    padding: 0 5px;
+    top: 6px;
+
+    img {
+      width: 10px;
+    }
+  }
+}
+.mx-search-suggestions {
+  position: absolute;
+  background: white;
+  width: 100%;
+  max-width: 350px;
+  padding-left: 10px;
+  cursor: pointer;
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.text-center.suggestion-p {
+  margin-bottom: 0rem;
+}

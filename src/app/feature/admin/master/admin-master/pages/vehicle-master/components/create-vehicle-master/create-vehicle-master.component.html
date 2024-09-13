@@ -1,0 +1,163 @@
+<div class="modal-header text-center">
+    <h5>Create Vehicle</h5>
+    <div class="close-modal" (click)="close()">
+        <i class="fa fa-close" style="cursor: pointer;"></i>
+    </div>
+</div>
+<div class="modal-body">
+    <form [formGroup]="vehicleMasterForm">
+        <div class="_card white-bg">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Company*</label>
+                    <ngx-select-dropdown [config]="config" [options]="companyDropdown" formControlName="companyName" (change)="onSelectCompany($event)"
+                        [ngClass]="{'active': companyDropdown && companyDropdown.length > 7}">
+                    </ngx-select-dropdown>
+                    @if (vehicleMasterForm.get('companyName')?.invalid &&
+                    (vehicleMasterForm.get('companyName')?.dirty || vehicleMasterForm.get('companyName')?.touched))
+                    {
+                    <span class="text-danger">Company Name is Required</span>
+                    }
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">User</label>
+                    <ngx-select-dropdown [config]="config" [options]="userDropdown" formControlName="user"
+                        [ngClass]="{'active': userDropdown && userDropdown.length > 7}">
+                    </ngx-select-dropdown>
+                    @if (vehicleMasterForm.get('user')?.invalid &&
+                    (vehicleMasterForm.get('user')?.dirty || vehicleMasterForm.get('user')?.touched))
+                    {
+                    <span class="text-danger">User is Required</span>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Vehicle Type</label>
+                    <ngx-select-dropdown [config]="config" [options]="vehicleTypeDropdown" formControlName="vehicleType"
+                        [ngClass]="{'active': vehicleTypeDropdown && vehicleTypeDropdown.length > 7}">
+                    </ngx-select-dropdown>
+                    @if (vehicleMasterForm.get('vehicleType')?.invalid &&
+                    (vehicleMasterForm.get('vehicleType')?.dirty || vehicleMasterForm.get('vehicleType')?.touched))
+                    {
+                    <span class="text-danger">Vehicle Type is Required</span>
+                    }
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Manufacture Year</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Manufacture Year"
+                            formControlName="mfgYear" aria-describedby="button-addon2" />
+                    </div>
+                    @if (vehicleMasterForm.get('mfgYear')?.invalid &&
+                    (vehicleMasterForm.get('mfgYear')?.dirty || vehicleMasterForm.get('mfgYear')?.touched))
+                    {
+                    <span class="text-danger">Manufacture Year is Required</span>
+                    }
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Vehicle No.</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Vehicle No."
+                            formControlName="vehicleNo" aria-describedby="button-addon2" />
+                    </div>
+                    @if (vehicleMasterForm.get('vehicleNo')?.invalid &&
+                    (vehicleMasterForm.get('vehicleNo')?.dirty || vehicleMasterForm.get('vehicleNo')?.touched))
+                    {
+                    <span class="text-danger">Vehicle No. is Required</span>
+                    }
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Maker</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Maker" formControlName="maker"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (vehicleMasterForm.get('maker')?.invalid &&
+                    (vehicleMasterForm.get('maker')?.dirty || vehicleMasterForm.get('maker')?.touched))
+                    {
+                    <span class="text-danger">Maker is Required</span>
+                    }
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Fitness Expiry Date</label>
+                    <calender [date]="vehicleMasterForm.get('fitnessExpDate')?.value" (dateTimeConfirm)="confirm($event)"></calender>
+                   
+                    @if (vehicleMasterForm.get('fitnessExpDate')?.invalid &&
+                    (vehicleMasterForm.get('fitnessExpDate')?.dirty ||
+                    vehicleMasterForm.get('fitnessExpDate')?.touched))
+                    {
+                    <span class="text-danger">Fitness Expiry Date is Required</span>
+                    }
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Engine No</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Engine No" formControlName="engineNo"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (vehicleMasterForm.get('engineNo')?.invalid &&
+                    (vehicleMasterForm.get('engineNo')?.dirty || vehicleMasterForm.get('engineNo')?.touched))
+                    {
+                    <span class="text-danger">Engine No is Required</span>
+                    }
+                </div>
+               
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Chasis No.</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Chasis No" formControlName="chasisNo"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (vehicleMasterForm.get('chasisNo')?.invalid &&
+                    (vehicleMasterForm.get('chasisNo')?.dirty || vehicleMasterForm.get('chasisNo')?.touched))
+                    {
+                    <span class="text-danger">Chasis No. is Required</span>
+                    }
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Model Name</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Model Name"
+                            formControlName="modelName" aria-describedby="button-addon2" />
+                    </div>
+                    @if (vehicleMasterForm.get('modelName')?.invalid &&
+                    (vehicleMasterForm.get('modelName')?.dirty || vehicleMasterForm.get('modelName')?.touched))
+                    {
+                    <span class="text-danger">Model Name is Required</span>
+                    }
+                </div>
+             
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-success" type="submit" [disabled]="!vehicleMasterForm.valid"
+                        (click)="submit(vehicleMasterForm.value)">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-danger" (click)="close()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

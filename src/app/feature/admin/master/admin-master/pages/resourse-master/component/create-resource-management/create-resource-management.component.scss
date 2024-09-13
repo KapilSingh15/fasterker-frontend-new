@@ -1,0 +1,13 @@
+::ng-deep {
+    ngx-select-dropdown {
+        .ngx-dropdown-list-container {
+            height: auto !important;
+        }
+
+        &.active {
+            .ngx-dropdown-list-container {
+                height: calc(100vh - 490px) !important;
+            }
+        }
+    }
+}

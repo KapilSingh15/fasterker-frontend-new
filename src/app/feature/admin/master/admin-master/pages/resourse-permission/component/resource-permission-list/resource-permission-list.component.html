@@ -1,0 +1,118 @@
+<div class="page-header">
+    <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="header-part">
+            <span>Resource Permission</span>
+            <div class="counting">
+                <span>
+                    {{ totlRecords > 0 ? startValue : 0 }} -
+                    {{ lastValue > totlRecords ? totlRecords : lastValue }}
+                    OF {{ totlRecords > 0 ? totlRecords : 0 }} Resource Permission
+                </span>
+            </div>
+            <div class="row" >
+                <div class="d-flex justify-content-center">
+                    <pagination-controls id="pg1" [maxSize]="10" [responsive]="true" [nextLabel]="''"
+                        [previousLabel]="''" (pageChange)="onTablePageChange($event)">
+                    </pagination-controls>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-2">
+              <ngx-select-dropdown [config]="config" [options]="options" (change)="onSearchBY($event)"></ngx-select-dropdown>
+            </div>
+            <div class="col-md-2">
+              <search-component [placeholder]="'Search Value'"  [isGlobalSearchEnabled]="false"
+              [disabled]="param.searchBy ? false : true"
+              [searchKey]="searchText" 
+              (sendValue)="onSearcRole($event)"></search-component>
+            </div>
+            <div class="col-md-2">
+                <ngx-select-dropdown [config]="config1" [options]="selectsearch"  (change)="onSearchSelect($event)"></ngx-select-dropdown>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" (click)="addResourcePermission()"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource
+                    Permission</button>
+            </div>
+          </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="overflow-auto">
+                    <app-skeleton-loader *ngIf="isLoading" [columns]="columns" [items]="resourcePermissionList"></app-skeleton-loader>
+                    <ngx-table *ngIf="!isLoading" [configuration]="configuration" [data]="resourcePermissionList
+                    | paginate
+                    : {
+                        id: 'pg1',
+                        itemsPerPage: tableItemsSize,
+                        currentPage: pageIndex,
+                        totalItems: totlRecords
+                      } " [columns]="columns" [noResultsTemplate]="noResultsTemplate">
+                        <ng-template let-item let-index="index">
+                            <td>{{item?.RoleName}}</td>
+                                        <td>{{item?.ResourceName}}</td>
+                                        <td>{{item?.Description}}</td>
+                                        <td>
+                                            @if (item?.PermissionAdd == true) {
+                                            <span class="badge rounded-pill bg-success">Yes</span>
+                                            }@else{
+                                            <span class="badge rounded-pill bg-danger">No</span>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            @if (item?.PermissionEdit == true) {
+                                            <span class="badge rounded-pill bg-success">Yes</span>
+                                            }@else {
+                                            <span class="badge rounded-pill bg-danger">No</span>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            @if (item?.PermissionView == true) {
+                                            <span class="badge rounded-pill bg-success">Yes</span>
+                                            }@else {
+                                            <span class="badge rounded-pill bg-danger">No</span>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            @if (item?.PermissionDelete == true) {
+                                            <span class="badge rounded-pill bg-success">Yes</span>
+                                            }@else {
+                                            <span class="badge rounded-pill bg-danger">No</span>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            @if (item?.IsActive == true) {
+                                            <span class="badge rounded-pill bg-success">Active</span>
+                                            }@else {
+                                            <span class="badge rounded-pill bg-danger">Inactive</span>
+                                            }
+                                        </td>
+                                        <!-- <td><a class="icon">
+                                            <i class="fa fa-trash text-danger cursor:pointer" style="margin-left: 10px;"></i>
+                                        </a></td> -->
+                        </ng-template>
+                    </ngx-table>
+                </div>
+                <ng-template #noResultsTemplate>
+                    <td [attr.colspan]="columns.length" class="no-results">
+                      Resource Permission Not Found
+                    </td>
+                  </ng-template>
+            </div>
+            
+        </div>
+    </div>
+</div>

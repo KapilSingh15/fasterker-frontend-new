@@ -1,0 +1,34 @@
+#checkbox{
+    width: 20px;
+    height: 20px;
+}
+
+::ng-deep{
+    .ngx-pagination-wrapper {
+        margin-top: 10px;
+    }
+}
+.ngx-form-checkbox input:checked + .ngx-form-icon.custom-checkbox-color {
+    background: #963dc3;
+    border: #682b88;
+  }
+  
+  .sub-header {
+    margin-top: 2rem;
+  }
+
+
+::ng-deep{
+    input#selectAllCheckboxes {
+        width: 54px !important;
+        height: 21px !important;
+    }
+}  
+
+.dataTables_scrollBody.scroll {
+    position: relative;
+    overflow: auto;
+    width: 100%;
+    height: 565px !important;
+    scrollbar-width: thin;
+}

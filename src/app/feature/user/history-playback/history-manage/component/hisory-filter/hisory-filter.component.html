@@ -1,0 +1,81 @@
+
+<div class="card">
+    <div class="card-body">
+    <form [formGroup]="historyForm">
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1" class="form-label">Vehicle No.</label>
+                <ngx-select-dropdown [config]="config" [options]="options" formControlName="deviceId">
+                </ngx-select-dropdown>
+            </div>
+            <div class="col-md-12 mt-3">
+                <label for="exampleInputEmail1" class="form-label">Time Period</label>
+                <ngx-select-dropdown [config]="config" [options]="selectDate"  formControlName="timeformat" (change)="timecheck($event)" >
+                </ngx-select-dropdown>
+            </div>
+          
+            @if(customDate) {
+                <div class="col-md-12 mt-3">
+                    <label class="form-label">From Date</label>
+                    <calender [date]="historyForm.get('fromDate')?.value" [type]="'fromDate'" (dateTimeConfirm)="confirm($event)"></calender>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <label class="form-label">To Date</label>
+                    <calender [date]="historyForm.get('toDate')?.value"  [type]="'toDate'" (dateTimeConfirm)="confirm($event)"></calender>
+                </div>
+            }
+            <div class="col-md-12 mt-3">
+                <label for="exampleInputEmail1" class="form-label">Stop Duration (mins)</label>
+                <input type="number" class="form-control" placeholder="Mins" />
+            </div>
+            <div class="col-md-12 mt-3">
+                <div class="submit" style="float: right">
+                    <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-spinner"></i> Load History
+                    </button>
+                    <div class="loaded dropdown" style="display: inline">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="fa fa-download"></i> Export
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">As KML(Google Earth)</a>
+                            </li>
+                            <li><a href="#">As CSV</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </form>
+        
+        <div class="vehicle-status">
+            <div class="card-box widget-user">
+                <div class="text-center">
+                    <h2  class="text-custom">NA</h2>
+                    <p>Distance(Kms)</p>
+                </div>
+            </div>
+            <div class="card-box widget-user">
+                <div class="text-center">
+                    <h2  class="text-custom">NA</h2>
+                    <p>Top Speed(Km/h)</p>
+                </div>
+            </div>
+            <div class="card-box widget-user">
+                <div class="text-center">
+                    <h2  class="text-custom">NA</h2>
+                    <p>Stopped</p>
+                </div>
+            </div>
+            <div class="card-box widget-user">
+                <div class="text-center">
+                    <h2  class="text-custom">NA</h2>
+                    <p>Moving</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

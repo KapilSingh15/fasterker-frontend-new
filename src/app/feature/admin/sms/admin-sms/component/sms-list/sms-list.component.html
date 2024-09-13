@@ -1,0 +1,44 @@
+<div class="page-header">
+    <ol class="breadcrumb" style="float: right;">
+        <li class="breadcrumb-item page-name"><a routerLink="">Home</a></li>
+        <li class="page-name" ><a routerLink=""> <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                SMS Master</a></li>
+    </ol>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        SMS Master
+    </div>
+    <div class="card-body">
+        <sms-filter></sms-filter>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="datatable_wrapper" class="dataTables_wrapper no-footer">
+                    <div class="dataTables_scroll">
+                        <div class="dataTables_scrollBody">
+                            <table id="datatable" class="table table-striped nowrap dataTable no-footer dtr-inline"
+                                role="grid" aria-describedby="datatable_info" style="width: 100%" width="100%">
+                                <thead>
+                                    <tr role="row">
+                                        <th *ngFor="let vehicleHeading of columns">
+                                            {{vehicleHeading?.title}}
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+
+                                </tbody>
+                            </table>
+                            <div class="text-center" style="width: 100%;">No Data Available</div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

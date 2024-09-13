@@ -1,0 +1,27 @@
+<div class="filter-part mb-3">
+    <div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Enter Mobile"
+                aria-describedby="button-addon2" />
+        </div>
+    </div>
+    <div >
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Sim No"
+                aria-describedby="button-addon2" />
+        </div>
+    </div>
+    <div>
+        <ngx-select-dropdown [config]="config" [options]="options">
+        </ngx-select-dropdown>        
+    </div>
+    <div>
+        <button class="btn btn-success" ><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+    </div>
+    <div>
+        <button class="btn btn-light"><i class="fa fa-filter" aria-hidden="true"></i> Export</button>
+    </div>
+    <div>
+        <button class="btn btn-primary" (click)="onAddSim()"><i class="fa fa-plus" aria-hidden="true"></i> Create</button>
+    </div>
+</div>

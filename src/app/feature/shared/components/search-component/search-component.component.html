@@ -1,0 +1,28 @@
+<div id="product-dropDown">
+    <div class="mx-search-box" [ngClass]="{'active' : searchDefaultValue}">
+        <input [disabled]="disabled" [placeholder]="placeholder" [value]="searchDefaultValue" type="text" #searchBoxInput
+       [(ngModel)]="searchKey"
+            class="form-control"
+              (keyup)="onchange($event)">
+        <button [disabled]="disabled" class="mx-search-btn">
+            <img src="/assets/images/icons/search-primary.svg" alt="Search Button" (click)="onSearch()">
+        </button>
+        <button [disabled]="disabled" class="mx-clear-input-brn" *ngIf="searchDefaultValue" (click)="onClearInput()">
+            <img src="/assets/images/icons/close-primary.svg" alt="Search Input Clear">
+        </button>
+    
+    </div>
+    <div class="mx-search-suggestions" >
+        <!-- @if(searchKey && searchKey.length < 3 && searchKey.length!=0) {
+            <p  class="text-center suggestion-p">enter 3 or
+                more chars</p>
+        } -->
+        @for(product of filteredProducts ; track product) {
+            <span>
+                <ul (click)="onSuggestionClick(product.firstVariantCode)">
+                    <a> {{product.styleName}}</a>
+                </ul>
+            </span>
+        }
+    </div>
+</div>

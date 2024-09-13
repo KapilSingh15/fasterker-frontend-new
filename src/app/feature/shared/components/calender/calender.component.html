@@ -1,0 +1,5 @@
+<div class="p-fluid">
+    <div class="flex-auto">
+        <p-calendar id="calendar" [(ngModel)]="date"  dateFormat="dd/mm/yy" placeholder="yyyy-MM-dd HH:mm:ss" [showTime]="true" (ngModelChange)="onChangeDate($event)"/>
+    </div>
+</div>

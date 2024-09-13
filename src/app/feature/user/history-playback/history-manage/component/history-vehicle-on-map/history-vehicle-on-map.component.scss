@@ -1,0 +1,88 @@
+#mapWrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#map_canvas {
+    width: 100%;
+    height: calc(100vh - 180px);
+    z-index: 0;
+}
+
+.leaflet-container {
+    overflow: visible !important;
+}
+
+.controls {
+    background-color: transparent;
+    height: 38px;
+    padding-top: 10px;
+    margin-right: 60px;
+    margin-left: 50px;
+    position: absolute;
+    z-index: 0;
+    width: 80%;
+    top: 0;
+}
+
+.ng-sidebar-content {
+    width: 100%;
+    overflow: none;
+  }
+
+.slidecontainer {
+    width: 100%;
+    .slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 1px;
+        border-radius: 2px;
+        background: #7d7e80;
+        outline: none;
+        opacity: 1;
+        -webkit-transition: .2s;
+        padding: 0px !important;
+        transition: opacity .2s;
+    }
+    button, input {
+        overflow: visible;
+    }
+}
+
+.btn-group {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+    .btn.btn-sm.btn-default {
+        width: 38px;
+    }
+
+    .mapcontrol {
+        margin: 0px !important;
+        padding: 0px !important;
+        width: 33px !important;
+        height: 33px !important;
+        line-height: 33px !important;
+        border-color: #dfdfe0;
+        color: #212121;
+        background: #fff;
+        .d-flex.justify-content-center {
+            height: 27px;
+            align-items: center;
+        }
+        .label-danger {
+            color: red;
+            display: inline;
+            padding: .2em .6em .3em;
+            font-size: 75%;
+            vertical-align: baseline;
+            border-radius: .25em;
+        }
+    }
+
+
+}

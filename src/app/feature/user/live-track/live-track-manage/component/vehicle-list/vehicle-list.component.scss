@@ -1,0 +1,65 @@
+.device-part {
+    width: 100%;
+    overflow-y: auto;
+    height: calc(100vh - 160px);
+    .form-control{
+        width: 100%;
+    }
+
+    .vehicle-details-part {
+        padding: 1rem;
+        background-color: #fff;
+        box-shadow: 0 -4px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        // max-width: 320px;
+        border-radius: 20px;
+        margin: 0px 1px;
+      }
+      
+      .title {
+        display: flex;
+        align-items: center;
+      }
+      
+      .title span {
+        position: relative;
+        padding: 0.5rem;
+        background-color: #10B981;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 9999px;
+      }
+      
+      .title span svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        height: 1rem;
+      }
+      
+      .title-text {
+        margin-left: 0.5rem;
+        color: #374151;
+      }
+      
+      .percent {
+        margin-left: 0.5rem;
+        color: #02972f;
+        font-weight: 600;
+        display: flex;
+      }
+      
+      .data {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      
+      .data p {
+        color: #1F2937;
+        font-weight: 700;
+        text-align: left;
+      }
+         
+}

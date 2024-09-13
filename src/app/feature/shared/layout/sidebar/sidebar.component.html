@@ -1,0 +1,44 @@
+<!-- Toggler -->
+
+<button class="navbar-toggler desktop-togle ms-n2" type="button" style="display: block !important"
+    (click)="expandSidebar()" [ngClass]="{ open: expanded === true }">
+    @if(expanded === true) {
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
+    } @else {
+    <i class="fa fa-angle-left" aria-hidden="true"></i>
+    }
+</button>
+
+
+<nav class="navbar show navbar-vertical navbar-expand-lg  active" @slidein id="navbarVertical">
+    <div class="d-md-none">
+        <button class="navbar-toggler mobile-togle ms-n2" type="button" style="display: block !important"
+            (click)="expandSidebar()" [ngClass]="{ open: expanded === true }">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="fluid">        
+        <div class="profile-detal">
+            <a class="navbar-title"></a>
+            <span class="subtitle"></span>
+            <span class="subtitle minor"></span>
+          </div>
+
+        <div class="collapse navbar-collapse" id="sidebarCollapse">
+            <!-- Navigation -->
+            <ul class="navbar-nav">
+                @for(menuValue of sidenav; track menuValue) {
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <!-- <img src="assets/images/side-home.svg" alt="" /> -->
+                        <i [class]="menuValue.iconClass" aria-hidden="true"></i> 
+                        <span>{{menuValue.name}}</span>
+                        
+                    </a>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

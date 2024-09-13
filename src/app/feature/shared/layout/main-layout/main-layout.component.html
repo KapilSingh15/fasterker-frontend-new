@@ -1,0 +1,13 @@
+<div class="d-flex flex-lg-row bg-surface-secondary"></div>
+
+<div class="d-flex flex-lg-row bg-surface-secondary">
+  @if(isSideBarOpen) {
+    <sidebar [sidenav]="sidenav" class="page-side-bar"></sidebar>
+  }
+
+  <div class="right-sidebar ">
+    <header (childNavList)="onChildListData($event)" (onSidebarOpen)="sabNavData($event)"></header>
+    <router-outlet class="page-routs"></router-outlet>
+    <!-- <ngx-loading [show]="loading" style="z-index: 99999999999999"></ngx-loading> -->
+  </div>
+</div>

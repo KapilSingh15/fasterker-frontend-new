@@ -1,0 +1,50 @@
+<form>
+    <div class="_card white-bg">
+        <div class="row">
+            <div class="col-md-6  mb-3">
+                <label class="form-label">Project 44 Id</label>
+                <div class="input-group">
+                   <input type="text" class="form-control" placeholder="Enter Id"
+                        aria-describedby="button-addon2" />
+               </div>
+              
+            </div>
+            <div class="col-md-6  mb-3">
+                <label class="form-label">Project 44 Username</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Username"
+                         aria-describedby="button-addon2" />
+                </div>
+              
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6  mb-3">
+               <label class="form-label">Project 44 Password</label>
+               <div class="input-group">
+                   <input type="text" class="form-control" placeholder="Enter Password"
+                        aria-describedby="button-addon2" />
+               </div>                   
+            </div>
+            <div class="col-md-6  mb-3">
+               <label class="form-label">Search Company</label>
+               <ngx-select-dropdown [config]="config" [options]="options">
+               </ngx-select-dropdown>                  
+            </div>
+        </div> 
+    </div>
+    <div class="footer">
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-success" type="submit">
+                    Submit
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-danger" >
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

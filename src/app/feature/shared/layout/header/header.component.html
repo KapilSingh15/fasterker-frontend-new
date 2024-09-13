@@ -1,0 +1,82 @@
+<div id="app inner-header">
+    <div class="header-part">
+        <div class="logo-main">
+            <img class="logo-image" src="assets/images/sky.png" alt="">
+
+            <button (click)="expandSidebar()" class="d-md-none">
+                <i class="bi bi-list menu-bar"></i>
+            </button>
+        </div>
+        <div class="menu">
+            <ul class="menu-items">
+         
+                @for(menuValue of menu; track menuValue) {
+                <!-- {{menuValue | json}} -->
+                <li class="menu-name">
+                    @if(menuValue?.ListMenus && menuValue?.ListMenus?.length > 0) {
+                    <div class="dropdown">
+                        <div class="dropdown-toggle" (click)="ontoggleSubmenu(menuValue.ModuleId)">
+                            <i [class]="menuValue?.Icons" aria-hidden="true"></i> {{ menuValue.ModuleName }}
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                            [ngStyle]="{'display': isDropdownOpen && selectedDropdownId == menuValue.ModuleId ? 'block' : 'none'}"
+                            [ngClass]="{'active': menuValue.ListMenus.length > 11}">
+                            @for(subNavValue of menuValue.ListMenus; track subNavValue) {
+                            @if(subNavValue?.childSubmenu && subNavValue?.childSubmenu?.length > 0) {
+                            <div class="dropdown child">
+                                <div class="dropdown-toggle child" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" (click)="toggleChild()">
+                                    <i [class]="menuValue.iconClass" aria-hidden="true"></i> {{subNavValue.name}}
+                                </div>
+                                <div class="subchild" aria-labelledby="dropdownMenu2"
+                                    [ngStyle]="{'display': isChildMenuOpen ? 'block' : 'none'}">
+                                    @for(childsubNavValue of subNavValue.childSubmenu; track childsubNavValue) {
+                                    <a class="dropdown-item" routerLink="{{childsubNavValue.path}}"
+                                        (click)="onToggle(menuValue)"> <i class="fa fa-chevron-right"
+                                            aria-hidden="true"></i>
+                                        {{childsubNavValue.name}}</a>
+                                    }
+                                </div>
+                            </div>
+                            } @else {
+                            <a class="dropdown-item link-name" routerLink="{{subNavValue.URL}}"
+                                (click)="onToggle(menuValue, subNavValue.MenuName )"><i [class]="subNavValue?.Icons" aria-hidden="true"></i>  {{subNavValue.MenuName}}</a>
+                            }
+                            }
+                        </div>
+                    </div>
+                    } @else {
+                    <a class="link-name" routerLink="{{menuValue?.URL}}" (click)="ontoggleSubmenu(menuValue.ModuleId)"><i [class]="menuValue?.Icons" aria-hidden="true"></i>  {{menuValue?.ModuleName}}</a>
+                    }
+                </li>
+                }
+
+            </ul>
+        </div>
+        <div class="notification-part">
+            <div class="notification">
+                <i class="fa fa-bell-o" aria-hidden="true"></i>
+            </div>
+            <div class="reports">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+
+            </div>
+            <div class="logout-part">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <div class="logout">
+                <button class="Btn" (click)="logout()">
+                    <div class="sign"><svg viewBox="0 0 512 512">
+                            <path
+                                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                            </path>
+                        </svg></div>
+
+                    <div class="text">Logout</div>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

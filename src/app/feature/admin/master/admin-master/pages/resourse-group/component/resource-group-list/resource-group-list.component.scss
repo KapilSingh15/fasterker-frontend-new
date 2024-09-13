@@ -1,0 +1,78 @@
+@import "../../../../../../.../../../../../styles/mixins/breakpoints";
+@import "../../../../../../../.../../../../styles/colors";
+
+/** ngx-pagination styling **/
+::ng-deep {
+    pagination-controls {
+      pagination-template {
+        .ngx-pagination {
+          margin-left: 0;
+          margin-bottom: 0rem !important;
+      }
+        ul {
+          border-radius: unset !important;
+          li {
+            border: none !important;
+            border-radius: 5px;
+            box-shadow: inset 0px 5px 6px #00000014;
+            &:nth-child(3) {
+              &.current {
+                border-radius: 5px 0px 0px 5px;
+              }
+            }
+            &:nth-last-child(2) {
+              &.current {
+                border-radius: 5px
+              }
+            }
+            &.current {
+              display: flex !important;
+              box-shadow: unset;
+            }
+            a {
+              text-decoration: unset !important;
+              height: 100%;
+              display: flex !important;
+              align-items: center;
+              justify-content: center;
+            }
+            &.pagination-next,
+            &.pagination-previous {
+              a {
+                color: $color-red;
+                font-size: 24px;
+                &::after,
+                &::before {
+                  margin-left: 0px !important;
+                  margin-bottom: 3px !important;
+                }
+              }
+            }
+          }
+          &.ngx-pagination.responsive {
+            li:not(.small-screen):not(.pagination-previous):not(
+                .pagination-next
+              ) {
+              display: inline-block;
+            }
+            li.small-screen {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .card-header{
+    .header-part{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    height: 75px;
+  }

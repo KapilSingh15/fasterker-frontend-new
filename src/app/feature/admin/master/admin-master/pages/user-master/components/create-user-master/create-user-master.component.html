@@ -1,0 +1,183 @@
+<div class="modal-header text-center">
+    <h5>Create User</h5>
+    <div class="close-modal">
+        <i class="fa fa-close" style="cursor: pointer;" (click)="close()"></i>
+    </div>
+</div>
+<div class="modal-body">
+    <form [formGroup]="userMasterForm">
+        <div class="_card white-bg">
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Company*</label>
+                    <ngx-select-dropdown [config]="config" [options]="companyDropdown" formControlName="companyName"
+                        [ngClass]="{'active': companyDropdown && companyDropdown.length > 7}">
+                    </ngx-select-dropdown>
+                    @if (userMasterForm.get('companyName')?.invalid &&
+                    (userMasterForm.get('companyName')?.dirty || userMasterForm.get('companyName')?.touched))
+                    {
+                    <span class="text-danger">Company Name is Required</span>
+                    }
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">User Name</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter User Name" formControlName="userName"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (userMasterForm.get('userName')?.invalid &&
+                    (userMasterForm.get('userName')?.dirty || userMasterForm.get('userName')?.touched))
+                    {
+                    <span class="text-danger">User Name is Required</span>
+                    }
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Name</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Name" formControlName="name"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (userMasterForm.get('name')?.invalid &&
+                    (userMasterForm.get('name')?.dirty || userMasterForm.get('name')?.touched))
+                    {
+                    <span class="text-danger">Name is Required</span>
+                    }
+
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Role</label>
+                    <ngx-select-dropdown [config]="config" [options]="roleDropdown" formControlName="role"
+                        [ngClass]="{'active': roleDropdown && roleDropdown.length > 7}">
+                    </ngx-select-dropdown>
+                    @if (userMasterForm.get('role')?.invalid &&
+                    (userMasterForm.get('role')?.dirty || userMasterForm.get('role')?.touched))
+                    {
+                    <span class="text-danger">Role is Required</span>
+                    }
+                </div>
+               
+                <!-- <div class="col-md-6  mb-3">
+                    <label class="form-label">Login Id</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Login Id" formControlName="companyName"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (userMasterForm.get('companyName')?.invalid &&
+                    (userMasterForm.get('companyName')?.dirty || userMasterForm.get('companyName')?.touched))
+                    {
+                    <span class="text-danger">Company Name is Required</span>
+                    }
+                </div>                 -->
+            </div>
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Mobile No</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Mobile No" formControlName="mobile"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (userMasterForm.get('mobile')?.invalid &&
+                    (userMasterForm.get('mobile')?.dirty || userMasterForm.get('mobile')?.touched))
+                    {
+                        <span class="text-danger">Mobile No. is Required and must be 10 digits</span>
+                    }
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Email</label>
+                    <div class="input-group mb-2">
+                        <input type="email" class="form-control" placeholder="Enter Email" formControlName="email"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (userMasterForm.get('email')?.invalid &&
+                    (userMasterForm.get('email')?.dirty || userMasterForm.get('email')?.touched))
+                    {
+                        <span class="text-danger">Valid Email is Required</span>
+                    }
+                </div>
+              
+
+            </div>
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Password</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Enter Password" formControlName="password"
+                            aria-describedby="button-addon2" />
+                    </div>
+                    @if (userMasterForm.get('password')?.invalid &&
+                    (userMasterForm.get('password')?.dirty || userMasterForm.get('password')?.touched))
+                    {
+                    <span class="text-danger">Password is Required</span>
+                    }
+                   
+                </div>
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Confirm Password"
+                            formControlName="confirmPassword" aria-describedby="button-addon2" />
+                    </div>
+                    @if (userMasterForm.get('confirmPassword')?.invalid &&
+                    (userMasterForm.get('confirmPassword')?.dirty || userMasterForm.get('confirmPassword')?.touched))
+                    {
+                    <span class="text-danger">Confirm Password is Required</span>
+                    }
+                </div>
+               
+
+            </div>
+            <div class="row">
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Timezone</label>
+                    <ngx-select-dropdown [config]="config" [options]="timeZone" formControlName="timeZone">
+                    </ngx-select-dropdown>
+                    @if (userMasterForm.get('timeZone')?.invalid &&
+                    (userMasterForm.get('timeZone')?.dirty || userMasterForm.get('timeZone')?.touched))
+                    {
+                    <span class="text-danger">Timezone is Required</span>
+                    }
+                </div>
+                <!-- <div class="col-md-6  mb-3">
+                    <label class="form-label">Manager</label>
+                    <ngx-select-dropdown [config]="config" [options]="options" formControlName="manager">
+                    </ngx-select-dropdown>
+                    @if (userMasterForm.get('manager')?.invalid &&
+                    (userMasterForm.get('manager')?.dirty || userMasterForm.get('manager')?.touched))
+                    {
+                    <span class="text-danger">Manager is Required</span>
+                    }
+                </div> -->
+
+                <div class="col-md-6  mb-3">
+                    <label class="form-label">Status</label>
+                    <ngx-select-dropdown [config]="config" [options]="StatusDropdown" formControlName="status">
+                    </ngx-select-dropdown>
+                    @if (userMasterForm.get('status')?.invalid &&
+                    (userMasterForm.get('status')?.dirty || userMasterForm.get('status')?.touched))
+                    {
+                    <span class="text-danger">Status is Required</span>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-success" type="submit" [disabled]="!userMasterForm.valid" (click)="submit(userMasterForm.value)">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-danger" (click)="cancel()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+
+<div class="modal-header text-center">
+    <h5>Create Company</h5>
+    <div class="close-modal" (click)="close()">
+        <i class="fa fa-close" style="cursor: pointer;"></i>
+    </div>
+</div>
+<div class="modal-body">
+    <div>
+      <app-company-master-details [updateCompany]="editData"></app-company-master-details>
+        <!-- <tabset>
+          <tab heading="Basic Details" id="tab1">
+            <div class="mt-2">
+            </div>
+          </tab>
+          <tab heading="Child Companies">
+            <div class="mt-2">
+              <child-companies></child-companies>
+            </div>
+          </tab>
+          <tab heading="Other Details">Basic content 2</tab>
+        </tabset> -->
+      </div>
+   
+</div>

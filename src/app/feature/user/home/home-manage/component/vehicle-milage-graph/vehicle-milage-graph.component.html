@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header">
+    FLEET MILEAGE (LAST 30 DAYS)
+  </div>
+  <div class="card-body" #chartContainer>
+    <ngx-charts-line-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="data"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel">
+    </ngx-charts-line-chart>
+  </div>
+</div>

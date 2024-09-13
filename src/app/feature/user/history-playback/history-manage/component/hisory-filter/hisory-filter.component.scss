@@ -1,0 +1,28 @@
+.submit {
+    display: flex;
+    gap: 5px;
+}
+
+.vehicle-status {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+
+    .card-box {
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 8px 42px 0 rgb(0 0 0 / 8%);
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        background-clip: padding-box;
+        .text-custom {
+            font-weight: 300;
+            // font-size: 27px;
+        }
+        h5 {
+            font-size: .875rem;
+        }
+    }
+}
