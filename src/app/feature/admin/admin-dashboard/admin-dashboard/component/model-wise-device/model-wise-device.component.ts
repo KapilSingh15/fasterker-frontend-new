@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 import ResizeObserver from 'resize-observer-polyfill';
 
 @Component({
@@ -50,17 +51,21 @@ export class ModelWiseDeviceComponent {
 
    resizeObserver!: ResizeObserver;
 
+   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
 
   ngAfterViewInit(): void {
-    this.resizeObserver = new ResizeObserver(entries => {
-      for (let entry of entries) {
-        const width = entry.contentRect.width;
-        const height = entry.contentRect.height;
-        this.view = [width, height];
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.resizeObserver = new ResizeObserver(entries => {
+        for (let entry of entries) {
+          const width = entry.contentRect.width;
+          const height = entry.contentRect.height;
+          this.view = [width, height];
+        }
+      });
 
-    this.resizeObserver.observe(this.chartContainer.nativeElement);
+      this.resizeObserver.observe(this.chartContainer.nativeElement);
+    }
   }
 
   ngOnDestroy(): void {
