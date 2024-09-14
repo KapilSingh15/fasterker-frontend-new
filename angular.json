@@ -44,7 +44,7 @@
               "node_modules/jquery/dist/jquery.js"
             ],
             "server": "src/main.server.ts",
-            "prerender": true,
+            "prerender": false,
             "ssr": {
               "entry": "server.ts"
             }
