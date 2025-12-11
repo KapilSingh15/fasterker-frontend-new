@@ -7,7 +7,7 @@
     }
 
     .vehicle-details-part {
-        padding: 1rem;
+        padding: 7px;
         background-color: #fff;
         box-shadow: 0 -4px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         // max-width: 320px;
@@ -17,25 +17,16 @@
       
       .title {
         display: flex;
-        align-items: center;
+        align-items: normal !important;
+        gap: 6px;
+        img.live-img {
+          max-width: 17px;
+        }
+        .first-part {
+          display: flex;
+          gap: 6px;
+          flex-grow: 1;
       }
-      
-      .title span {
-        position: relative;
-        padding: 0.5rem;
-        background-color: #10B981;
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 9999px;
-      }
-      
-      .title span svg {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #ffffff;
-        height: 1rem;
       }
       
       .title-text {
@@ -49,17 +40,33 @@
         font-weight: 600;
         display: flex;
       }
-      
-      .data {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-      }
-      
-      .data p {
-        color: #1F2937;
-        font-weight: 700;
-        text-align: left;
-      }
+      .device_address {
+        margin-top: 3px;
+        display: block;
+        font-size: 11px;
+        line-height: 14px;
+    }
          
 }
+
+
+.status-0 {
+  color: rgb(25 173 0) !important;
+}
+
+.status-1-substatus-2 {
+  color: #4861ED !important;
+}
+
+.status-2-substatus-3 {
+  color: #FFAF1D !important;
+}
+
+.status-0-no-substatus {
+  color: #696969 !important;
+}
+
+.status {
+  color: balck !important;
+}
+

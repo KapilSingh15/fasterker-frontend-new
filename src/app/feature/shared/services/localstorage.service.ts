@@ -20,8 +20,6 @@ export class LocalStorageService {
   setItem(key: string, value: string): void {
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem(key, value);
-    } else {
-      console.warn('localStorage is not available');
     }
   }
 
@@ -30,7 +28,6 @@ export class LocalStorageService {
     if (this.isLocalStorageAvailable()) {
       return localStorage.getItem(key);
     } else {
-      console.warn('localStorage is not available');
       return null;
     }
   }
@@ -39,8 +36,6 @@ export class LocalStorageService {
   removeItem(key: string): void {
     if (this.isLocalStorageAvailable()) {
       localStorage.removeItem(key);
-    } else {
-      console.warn('localStorage is not available');
     }
   }
 
@@ -48,8 +43,6 @@ export class LocalStorageService {
   clear(): void {
     if (this.isLocalStorageAvailable()) {
       localStorage.clear();
-    } else {
-      console.warn('localStorage is not available');
     }
   }
 }
