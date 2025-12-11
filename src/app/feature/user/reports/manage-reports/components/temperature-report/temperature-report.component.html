@@ -1,0 +1,117 @@
+<div class="main-section">
+    <div class="page-header">
+        <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="header-part">
+                <span>Temperature Report</span>
+                <div class="counting">
+                    <span>
+                        {{ totlRecords > 0 ? startValue : 0 }} -
+                        {{ lastValue > totlRecords ? totlRecords : lastValue }}
+                        OF {{ totlRecords > 0 ? totlRecords : 0 }} Temperature Report
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="d-flex justify-content-center">
+                        <pagination-controls id="pg1" [maxSize]="10" [responsive]="true" [nextLabel]="''"
+                            [previousLabel]="''" (pageChange)="onTablePageChange($event)">
+                        </pagination-controls>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="temperatureForm">
+                <div class="row mb-3">
+                    
+                    <div class="col-md-2">
+                        <label class="form-label">Devices</label>
+                        <ngx-select-dropdown [config]="config1" [options]="deviceList"
+                            formControlName="devices"></ngx-select-dropdown>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">View Type</label>
+                        <ngx-select-dropdown [config]="config" [options]="options"
+                            formControlName="group"></ngx-select-dropdown>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Filter Day</label>
+                        <ngx-select-dropdown [config]="config2" [options]="filterDay" (change)="onChangeDay($event)"
+                            formControlName="filterDay"></ngx-select-dropdown>
+                    </div>
+                    
+                    <div class="col-md-2" *ngIf="customeDate == 'Custom'">
+                        <label class="form-label">From Date</label>
+                        <calender [date]="temperatureForm.get('fromDate')?.value"
+                            (dateTimeConfirm)="confirm($event,'FromDate')"></calender>
+                    </div>
+                    <div class="col-md-2" *ngIf="customeDate == 'Custom'">
+                        <label class="form-label">To Date</label>
+                        <calender [date]="temperatureForm.get('toDate')?.value" (dateTimeConfirm)="confirm($event,'ToDate')">
+                        </calender>
+                    </div> 
+                    
+                    <div class="col-md-2">
+                        <label class="form-label">Sampling</label>
+                        <div class="input-group mb-2">
+                            <input type="number" class="form-control" placeholder="Enter Sampling" formControlName="speed"
+                                aria-describedby="button-addon2" />
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-md-2">
+                        <label class="form-label">Start Address</label>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" placeholder="Enter Start Address"
+                                formControlName="start_address" aria-describedby="button-addon2" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">End Address</label>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" placeholder="Enter End Address"
+                                formControlName="end_address" aria-describedby="button-addon2" />
+                        </div>
+                    </div> -->
+                    <div class="col-md-2 mt-2">
+                        <br>
+                        <button class="btn btn-primary" (click)="submit(temperatureForm.value)">View Report</button>
+
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overflow-auto">
+                        <app-skeleton-loader *ngIf="isLoading" [columns]="columns"
+                            [items]="stopReportList"></app-skeleton-loader>
+                        <ngx-table [configuration]="configuration" [data]="stopReportList
+                        | paginate
+                        : {
+                            id: 'pg1',
+                            itemsPerPage: tableItemsSize,
+                            currentPage: pageIndex,
+                            totalItems: totlRecords
+                          } " [columns]="columns" [noResultsTemplate]="noResultsTemplate">
+                            <ng-template let-item let-index="index">
+
+
+                            </ng-template>
+                        </ngx-table>
+                    </div>
+                    <ng-template #noResultsTemplate>
+                        <td [attr.colspan]="columns.length" class="no-results">
+                            Temperature Report Not Found
+                        </td>
+                    </ng-template>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
